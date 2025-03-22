@@ -27,26 +27,36 @@ export default function LoginScreen() {
   const [error, setError] = useState("");
 
   const handleLogin = () => {
+    // Reset error state
     setError("");
 
+    // Validate inputs
     if (!email.trim() || !password.trim()) {
       setError("Por favor, preencha todos os campos");
       return;
     }
 
+    // Simple email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       setError("Por favor, insira um email válido");
       return;
     }
 
+    // Show loading indicator
     setIsLoading(true);
 
+    // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
 
+      // Navigate to home screen
       router.replace("/(tabs)");
     }, 1500);
+  };
+
+  const navigateToRegister = () => {
+    router.push("/register");
   };
 
   return (
@@ -129,7 +139,10 @@ export default function LoginScreen() {
             <View style={styles.dividerLine} />
           </View>
 
-          <TouchableOpacity style={styles.registerButton}>
+          <TouchableOpacity
+            style={styles.registerButton}
+            onPress={navigateToRegister}
+          >
             <Text style={styles.registerButtonText}>Criar uma conta</Text>
           </TouchableOpacity>
         </View>
@@ -141,7 +154,6 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
     backgroundColor: "#FFFFFF",
   },
   scrollContent: {

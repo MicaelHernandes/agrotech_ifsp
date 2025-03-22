@@ -6,6 +6,7 @@ import {
   ShoppingBag,
   ClipboardList,
   Settings,
+  BoxIcon,
 } from "lucide-react-native";
 import { View, StyleSheet, Platform } from "react-native";
 import { BlurView } from "expo-blur";
@@ -81,7 +82,7 @@ export default function TabLayout() {
           if (route.name === "index") {
             icon = Home;
           } else if (route.name === "products") {
-            icon = ShoppingBag;
+            icon = BoxIcon;
           } else if (route.name === "orders") {
             icon = ShoppingBag;
           } else if (route.name === "settings") {
